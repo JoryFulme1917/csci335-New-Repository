@@ -24,16 +24,16 @@ public class FloatDrawing {
         return pixels[x][y];
     }
 
-    public void set(int x, int y, double value) {
-        pixels[x][y] = value;
-    }
-
+    public void set(int x, int y, double value) {pixels[x][y] = value;}
     // TODO: Calculate a weighted average. The argument d1weight is a value
     //  between zero and one. Each pixel in the returned FloatDrawing
     //  is calculated as follows:
     //  d1weight * d1 pixel value + (1.0 - d1weight) * d2 pixel value
     public static FloatDrawing weightedAverageOf(FloatDrawing d1, FloatDrawing d2, double d1weight) {
-        // Your code here
+        
+
+
+
         return null;
     }
 
@@ -48,6 +48,7 @@ public class FloatDrawing {
     // TODO: Calculate the pixel-by-pixel Euclidean distance between these two
     //  FloatDrawing objects.
     public double euclideanDistance(FloatDrawing other) {
+
         return 0.0;
     }
 
