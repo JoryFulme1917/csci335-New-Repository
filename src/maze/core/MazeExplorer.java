@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
+import core.Direction;
 import core.Pos;
 
 public class MazeExplorer {
@@ -42,10 +43,32 @@ public class MazeExplorer {
 
 	public ArrayList<MazeExplorer> getSuccessors() {
 		ArrayList<MazeExplorer> result = new ArrayList<MazeExplorer>();
-		// TODO: It should add as a successor every adjacent, unblocked neighbor square.
-		// I added a comment for demonstration purposes.
-        return result;
-	}
+		int[][] cardinalDirections = {{0,1}, {1, 0}, {0,-1}, {-1,0}};
+
+		for (int[] card : cardinalDirections) {
+			int updX = location.getX() + card[0];
+			int updY = location.getY() + card[1];
+
+			Pos posProx = new Pos(updX, updY);
+
+			if (m.within(posProx) && !m.blocked(location, Direction.between(location,posProx))){
+				MazeExplorer successor = new MazeExplorer(m, posProx);
+				successor.addTreasures(treasureFound);
+				if (m.isTreasure(updX, updY)) {
+					successor.getAllTreasureFound().add(posProx);
+				}
+
+					// Create a new MazeExplorer for the valid, unblocked position and add it to the result
+
+					result.add(successor);
+
+				}
+			}
+
+		return result;
+
+
+		}
 	
 	public void addTreasures(Collection<Pos> treasures) {
 		treasureFound.addAll(treasures);
